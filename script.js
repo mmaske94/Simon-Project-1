@@ -5,7 +5,7 @@ let level; //keeps track of what level we are on
 let good; // keeps track of how good we are doing
 let compTurn; // if it's the computer's Turn
 let intervalId;//this helps with timing of the flashes
-let gameOn = false; // if the game is on or not--right now it is set to false, meaning it is not on
+let gameOn = false; // if the game is on or not--right now it is set to false, meaning it is not on, the player cannot click anything
 let gameWon;//if the game is won or not
 
 const redSquare = document.querySelector(".red"); //this grabs the red square
@@ -42,15 +42,14 @@ function playGame() { //starts the computer's choice
     gameWon = false;//this puts the game back to false. this is important when you win the game and you reset it. if you didn't and hit reset, it would still assume you won
     computerChoice = [];//at the start of the game, the computerChoice array is empty. This happens really quickly
     playerChoice = [];//at the start of the game, the playerChoice array is empty
-    flash = 0;//at the start of the game, no flashes happen, so that is why we start it at 0
-    intervalId = 0;
+    flash = 0;//at the start of the game, no flashes happen, so that is why we start it at 0. Also, this helps turn the computer's turn off and helps the index number
     level = 1;//we start on level on, that is why we have 1
     good = true;//we haven't failed yet, so that is why it is true
     for (let i=0; i < 20; i++){ 
-        computerChoice.push(Math.floor(Math.random() * 9)+1)//this pushed a random number into the computer choices array, 20 times
+        computerChoice.push(Math.floor(Math.random() * 9)+1)//this pushed a random number into the computer choices array, 20 times. Times a random number between 0-1 by 9 and then rounds down to the nearest integer. Then adds 1
 }
-compTurn = true; //because it starts with the computer first
-intervalId = setInterval(computerTurn, 800);
+    compTurn = true; //because it starts with the computer first
+    intervalId = setInterval(computerTurn, 700);//when the game is played, the time it passes from once you click start to the first flash
 
 }
 
@@ -64,49 +63,49 @@ function computerTurn(){
     }
 
     if (compTurn){ //if computer's turn is true
-        originalColor();//run this function
+        originalColor();//run this function, turns all colors back to their original color
         setTimeout(() => {//wait 200 milliseconds
-            if (computerChoice[flash]==1) one(); //if the flashed number index equals 1, run the one function
-            if (computerChoice[flash]==2) two();//if the flashed number index equals 2, run the two function
-            if (computerChoice[flash]==3) three();//if the flashed number index equals 3, run the three function
-            if (computerChoice[flash]==4) four();//if the flashed number index equals 4, run the four function
-            if (computerChoice[flash]==5) five();//if the flashed number index equals 5, run the five function
-            if (computerChoice[flash]==6) six();//if the flashed number index equals 6, run the six function
-            if (computerChoice[flash]==7) seven();//if the flashed number index equals 7, run the seven function
-            if (computerChoice[flash]==8) eight();//if the flashed number index equals 8, run the eight function
-            if (computerChoice[flash]==9) nine();//if the flashed number index equals 9, run the nine function
+            if (computerChoice[flash]==1) red(); //if the flashed number index equals 1, run the one function
+            if (computerChoice[flash]==2) orange();//if the flashed number index equals 2, run the two function
+            if (computerChoice[flash]==3) yellow();//if the flashed number index equals 3, run the three function
+            if (computerChoice[flash]==4) green();//if the flashed number index equals 4, run the four function
+            if (computerChoice[flash]==5) blue();//if the flashed number index equals 5, run the five function
+            if (computerChoice[flash]==6) purple();//if the flashed number index equals 6, run the six function
+            if (computerChoice[flash]==7) brown();//if the flashed number index equals 7, run the seven function
+            if (computerChoice[flash]==8) gray();//if the flashed number index equals 8, run the eight function
+            if (computerChoice[flash]==9) black();//if the flashed number index equals 9, run the nine function
             flash++;
-            console.log(computerChoice)
+            // console.log(computerChoice)
         }, 200)//this will stop the computer from flashing for 200 milliseconds
     }
 }
 
 //these functions just change the color when either flashed(compTurn) or when clicked on by player
-function one(){
+function red(){
     redSquare.style.backgroundColor = "#FFFFFF";
 }
-function two(){
+function orange(){
     orangeSquare.style.backgroundColor = "#FFFFFF";
 }
-function three(){
+function yellow(){
     yellowSquare.style.backgroundColor = "#FFFFFF";
 }
-function four(){
+function green(){
     greenSquare.style.backgroundColor = "#FFFFFF";
 }
-function five(){
+function blue(){
     blueSquare.style.backgroundColor = "#FFFFFF";
 }
-function six(){
+function purple(){
     purpleSquare.style.backgroundColor = "#FFFFFF";
 }
-function seven(){
+function brown(){
     brownSquare.style.backgroundColor = "#FFFFFF";
 }
-function eight(){
+function gray(){
     graySquare.style.backgroundColor = "#FFFFFF";
 }
-function nine(){
+function black(){
     blackSquare.style.backgroundColor = "#FFFFFF";
 }
 
@@ -138,7 +137,7 @@ redSquare.addEventListener("click", (event) => {
     if (gameOn){//if the gameOn is true
         playerChoice.push(1);//if this square is clicked, push the number inside the () to playerChoice array
         check();//calls the check function
-        one();//on the click, changes the square the color
+        red();//on the click, changes the square the color
         if(!gameWon){
             setTimeout(()=>{
                 originalColor();
@@ -151,7 +150,7 @@ orangeSquare.addEventListener("click", (event) => {
     if (gameOn){//if the gameOn is true
         playerChoice.push(2);//if this square is clicked, push the number inside the () to playerChoice array
         check();//calls the check function
-        two();//on the click, changes the square the color
+        orange();//on the click, changes the square the color
         if(!gameWon){
             setTimeout(()=>{
                 originalColor();//changes the color when clicked, if game has not yet been won
@@ -163,7 +162,7 @@ orangeSquare.addEventListener("click", (event) => {
 yellowSquare.addEventListener("click", (event) => {
     if (gameOn){//if the gameOn is true
         playerChoice.push(3);//if this square is clicked, push the number inside the () to playerChoice array
-        check();//calls the check function
+        yellow();//calls the check function
         three();//on the click, changes the square the color
         if(!gameWon){
             setTimeout(()=>{
@@ -177,7 +176,7 @@ greenSquare.addEventListener("click", (event) => {
     if (gameOn){//if the gameOn is true
         playerChoice.push(4);//if this square is clicked, push the number inside the () to playerChoice array
         check();//calls the check function
-        four();//on the click, changes the square the color
+        green();//on the click, changes the square the color
         if(!gameWon){
             setTimeout(()=>{
                 originalColor();//changes the color when clicked, if game has not yet been won
@@ -189,7 +188,7 @@ blueSquare.addEventListener("click", (event) => {
     if (gameOn){//if the gameOn is true
         playerChoice.push(5);//if this square is clicked, push the number inside the () to playerChoice array
         check();//calls the check function
-        five();//on the click, changes the square the color
+        blue();//on the click, changes the square the color
         if(!gameWon){
             setTimeout(()=>{
                 originalColor();//changes the color when clicked, if game has not yet been won
@@ -201,7 +200,7 @@ purpleSquare.addEventListener("click", (event) => {
     if (gameOn){//if the gameOn is true
         playerChoice.push(6);//if this square is clicked, push the number inside the () to playerChoice array
         check();//calls the check function
-        six();//on the click, changes the square the color
+        purple();//on the click, changes the square the color
         if(!gameWon){
             setTimeout(()=>{
                 originalColor();//changes the color when clicked, if game has not yet been won
@@ -213,7 +212,7 @@ brownSquare.addEventListener("click", (event) => {
     if (gameOn){//if the gameOn is true
         playerChoice.push(7);//if this square is clicked, push the number inside the () to playerChoice array
         check();//calls the check function
-        seven();//on the click, changes the square the color
+        brown();//on the click, changes the square the color
         if(!gameWon){
             setTimeout(()=>{
                 originalColor();//changes the color when clicked, if game has not yet been won
@@ -225,7 +224,7 @@ graySquare.addEventListener("click", (event) => {
     if (gameOn){//if the gameOn is true
         playerChoice.push(8);//if this square is clicked, push the number inside the () to playerChoice array
         check();//calls the check function
-        eight();//on the click, changes the square the color
+        gray();//on the click, changes the square the color
         if(!gameWon){
             setTimeout(()=>{
                 originalColor();//changes the color when clicked, if game has not yet been won
@@ -237,7 +236,7 @@ blackSquare.addEventListener("click", (event) => {
     if (gameOn){//if the gameOn is true
         playerChoice.push(9);//if this square is clicked, push the number inside the () to playerChoice array
         check();//calls the check function
-        nine();//on the click, changes the square the color
+        black();//on the click, changes the square the color
         if(!gameWon){
             setTimeout(()=>{
                 originalColor();//changes the color when clicked, if game has not yet been won
@@ -273,7 +272,7 @@ function check(){//this function checks to see if the player got their choice ri
         compTurn=true;//make the compTurn equal to true
         flash=0;//make flash equal 0 again
         levelTracker.innerHTML = level;//make the level counter the level number
-        intervalId=setInterval(computerTurn,1000);//this is the interval between when it goes to the computer's turn
+        intervalId=setInterval(computerTurn,1000);//this is the interval between when it goes to the computer's turn and how long itll stay the flash color
     }
   
 }
