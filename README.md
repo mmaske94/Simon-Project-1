@@ -44,9 +44,9 @@ If the User Clicks the Wrong Square or the User wins the entire game:
 
 All squares turn white
 # Unsolved Problems/Major Hurdles
--Small problem, when the user wins or gets one wrong the "leveltracker" will look like: "YOU WIN!/20" or "WRONG/20".
+-Unsolved problem, when the user wins or gets one wrong the "leveltracker" will look like: "YOU WIN!/20" or "WRONG/20".
 
--When it flases the same color twice, it looks odd. The second flash will go quicker
+-Unsolved problem, when it flases the same color twice, it looks odd. The second flash will go quicker
 
 -Major Hurdle was getting to check if the player's choice equaled the computer's choice
 
