@@ -1,0 +1,109 @@
+
+body{
+  background-color: black;
+  
+}
+
+h1{
+    display: flex;
+    justify-content: center;
+    color: white;
+}
+
+.squares {
+    padding: 5px 0px 5px 0px;
+    display: grid;
+    justify-content: center;
+    grid-gap: 50px;
+    grid-template-rows: 150px 150px 150px;
+    grid-template-columns: 150px 150px 150px;
+  }
+ 
+  .red {
+    border-style: solid;
+    border-color: white;
+    background-color: #FF0000;
+  }
+
+  .orange {
+    border-style: solid;
+    border-color: white;
+    background-color: #CC5500;
+  }
+  .yellow {
+    border-style: solid;
+    border-color: white;
+    background-color: #FFD100
+    
+  }
+  .green {
+    border-style: solid;
+    border-color: white;
+    background-color: #008000;
+  }
+  .blue {
+    border-style: solid;
+    border-color: white;
+    background-color: #0000FF;
+  }
+  .purple{
+    border-style: solid;
+    border-color: white;
+    background-color: #4B0082;
+  }
+  .brown {
+    border-style: solid;
+    border-color: white;
+    background-color: #401F00;
+  }
+  .gray {
+    border-style: solid;
+    border-color: white;
+    background-color: #373737;
+  }
+  .black {
+    border-style: solid;
+    border-color: white;
+    background-color: #000000;
+  }
+
+  h2{
+    color: white;
+    text-align: center;
+    
+  }
+
+  .leveltracker {
+    display: flex;
+    justify-content: center;
+  }
+
+  .button{
+    display: flex;
+    justify-content: center;
+    margin-top: 5px;
+    
+  }
+
+  #start{
+    color: white;
+    border-style: solid;
+    border-color: white;
+    background-color: black;
+}
+
+#reset{
+  color: white;
+  border-style: solid;
+  border-color: white;
+  background-color: black;
+}
+
+.word{
+  margin-bottom: 0px;
+}
+
+
+  
+
+  
