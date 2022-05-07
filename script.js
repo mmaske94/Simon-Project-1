@@ -163,7 +163,6 @@ yellowSquare.addEventListener("click", (event) => {
     if (gameOn){//if the gameOn is true
         playerChoice.push(3);//if this square is clicked, push the number inside the () to playerChoice array
         yellow();//calls the check function
-        three();//on the click, changes the square the color
         if(!gameWon){
             setTimeout(()=>{
                 originalColor();//changes the color when clicked, if game has not yet been won
